@@ -8,12 +8,12 @@ const Movie = (props) => {
 
   useEffect(() => {
     getDataMovie();
-  }, [props]);
+  }, []);
 
   const getDataMovie = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`http://localhost:4000/v1/movies/${props.match.params.id}`);
+      const response = await axios.get(`http://localhost:4000/v1/movie/${props.match.params.id}`);
       response.data.movie.genres
         ? (response.data.movie.genres = Object.values(response.data.movie.genres))
         : (response.data.movie.genres = []);
@@ -21,7 +21,6 @@ const Movie = (props) => {
 
       setIsLoading(false);
     } catch (err) {
-      console.log(err);
       setError('Invalid response code: ' + err.response?.status);
       setIsLoading(false);
     }

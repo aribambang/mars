@@ -15,7 +15,6 @@ const Genres = () => {
     try {
       setIsLoading(true);
       const response = await axios.get('http://localhost:4000/v1/genres');
-      console.log(response.data);
       setGenres(response.data.genres);
       setIsLoading(false);
     } catch (err) {
@@ -30,15 +29,19 @@ const Genres = () => {
     <>Error: {error}</>
   ) : (
     <>
-      <h2>Choose a Movie</h2>
-      <ul>
+      <h2>Genres</h2>
+      <div className='list-group'>
         {genres.length > 0 &&
           genres.map((genre) => (
-            <li key={genre.id}>
-              <Link to={`/genres/${genre.id}`}>{genre.genre_name}</Link>
-            </li>
+            <Link
+              key={genre.id}
+              to={{ pathname: `/genre/${genre.id}`, genreName: genre.genre_name }}
+              className='list-group-item list-group-item-action'
+            >
+              {genre.genre_name}
+            </Link>
           ))}
-      </ul>
+      </div>
     </>
   );
 };

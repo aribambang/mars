@@ -1,10 +1,11 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Movies from './components/Movies';
 import Admin from './components/Admin';
 import Home from './components/Home';
 import Movie from './components/Movie';
 import Genres from './components/Genres';
+import Genre from './components/Genre';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route path='/movies'>
                 <Movies />
               </Route>
+              <Route exact path='/genre/:id' component={Genre} />
               <Route exact path='/genres'>
                 <Genres />
               </Route>
