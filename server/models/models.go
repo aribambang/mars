@@ -9,6 +9,10 @@ type Models struct {
 	DB DBModel
 }
 
+type DBModel struct {
+	DB *sql.DB
+}
+
 func NewModels(db *sql.DB) Models {
 	return Models{
 		DB: DBModel{DB: db},
@@ -30,7 +34,7 @@ type Movie struct {
 }
 
 type Genre struct {
-	ID        int       `json:"-"`
+	ID        int       `json:"id"`
 	GenreName string    `json:"genre_name"`
 	CreatedAt time.Time `json:"-"`
 	UpdatedAt time.Time `json:"-"`

@@ -7,10 +7,10 @@ const Movie = (props) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    getDataMovies();
+    getDataMovie();
   }, [props]);
 
-  const getDataMovies = async () => {
+  const getDataMovie = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(`http://localhost:4000/v1/movies/${props.match.params.id}`);

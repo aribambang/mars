@@ -3,8 +3,8 @@ import { HashRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-
 import Movies from './components/Movies';
 import Admin from './components/Admin';
 import Home from './components/Home';
-import Categories from './components/Categories';
 import Movie from './components/Movie';
+import Genres from './components/Genres';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
                   <Link to='/movies'>Movies</Link>
                 </li>
                 <li className='list-group-item'>
-                  <Link to='/by-category'>Categories</Link>
+                  <Link to='/genres'>Genres</Link>
                 </li>
                 <li className='list-group-item'>
                   <Link to='/admin'>Manage Catalogue</Link>
@@ -42,19 +42,9 @@ function App() {
               <Route path='/movies'>
                 <Movies />
               </Route>
-              <Route exact path='/by-category'>
-                <CategoryPage />
+              <Route exact path='/genres'>
+                <Genres />
               </Route>
-              <Route
-                exact
-                path='/by-category/drama'
-                render={(props) => <Categories {...props} title='Drama' />}
-              />
-              <Route
-                exact
-                path='/by-category/comedy'
-                render={(props) => <Categories {...props} title='Comedy' />}
-              />
               <Route path='/admin'>
                 <Admin />
               </Route>
@@ -63,24 +53,6 @@ function App() {
         </div>
       </div>
     </Router>
-  );
-}
-
-function CategoryPage() {
-  const { path, url } = useRouteMatch();
-
-  return (
-    <div>
-      <h2>Categories</h2>
-      <ul>
-        <li>
-          <Link to={`${path}/comedy`}>Comedy</Link>
-        </li>
-        <li>
-          <Link to={`${url}/drama`}>Drama</Link>
-        </li>
-      </ul>
-    </div>
   );
 }
 

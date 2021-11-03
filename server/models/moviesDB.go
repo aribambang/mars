@@ -2,13 +2,8 @@ package models
 
 import (
 	"context"
-	"database/sql"
 	"time"
 )
-
-type DBModel struct {
-	DB *sql.DB
-}
 
 func (m *DBModel) Get(id int) (*Movie, error) {
 
